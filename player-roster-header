@@ -1,0 +1,39 @@
+//*********************************************************
+//* Joseph Rydel
+//* COSC 1560 Computer Programming II                    
+//* Program Name: Player.h
+//* Homework Number 09, Assignment 09                      
+//* Problem #: xx.x                                        
+//* Due Date: 11/18/2020                                                           
+//*********************************************************
+
+
+#ifndef PLAYER_H
+#define PLAYER_H
+
+using namespace std;
+#include<string>
+
+class Player
+{
+	private:
+		int playerNumber;
+		string playerName;
+		int playerAge;
+		double batAverage;
+
+	public:
+		Player();
+		Player(int, string , int , double);
+		~Player();
+		void setPlayerNumber(int);
+		void setPlayerName(string);
+		void setPlayerAge(int);
+		void setBatAverage(double);
+		string getPlayerName() const;
+		int getPlayerNumber() const;
+		int getPlayerAge() const;
+		double getBatAverage() const;
+};
+
+#endif
