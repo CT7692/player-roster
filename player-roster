@@ -1,0 +1,76 @@
+//*********************************************************
+//* Joseph Rydel
+//* COSC 1560 Computer Programming II                    
+//* Program Name: Player.cpp
+//* Homework Number 09, Assignment 09                      
+//* Problem #: xx.x                                        
+//* Due Date: 11/18/2020                                                           
+//*********************************************************
+
+
+#include<iostream>
+#include<string>
+#include "Rydel_Player.h"
+using namespace std;
+
+Player::Player()
+{
+	playerNumber = 0;
+	playerName = "*none* ";
+	playerAge = 0;
+	batAverage = 0;
+}
+
+Player::Player(int playNum, string playName, int playAge, double batAvg)
+{
+	playerNumber = playNum;
+	playerName = playName;
+	playerAge = playAge;
+	batAverage = batAvg;
+}
+
+Player::~Player()
+{
+	cout << "\n" << playerNumber << ", " << playerName << " removed" << endl;
+}
+
+void Player::setPlayerNumber(int pNum)
+{
+	playerNumber = pNum;
+}
+
+void Player::setPlayerName(string pNam)
+{
+	playerName = pNam;
+}
+
+void Player::setPlayerAge(int pAge)
+{
+	playerAge = pAge;
+}
+
+void Player::setBatAverage(double bAvg)
+{
+	batAverage = bAvg;
+}
+
+string Player::getPlayerName() const
+{
+	return playerName;
+}
+
+int Player::getPlayerNumber() const
+{
+	return playerNumber;
+}
+
+int Player::getPlayerAge() const
+{
+	return playerAge;
+}
+
+double Player::getBatAverage() const
+{
+	return batAverage;
+}
+
