@@ -1,0 +1,208 @@
+//*********************************************************
+//* Joseph Rydel
+//* COSC 1560 Computer Programming II                    
+//* Program Name: PlayerDriver.cpp
+//* Homework Number 09, Assignment 09                      
+//* Problem #: xx.x                                        
+//* Due Date: 11/18/2020                                                           
+//*********************************************************
+
+#include "Rydel_Player.h"
+#include<iostream>
+#include<iomanip>
+#include<string>
+#include<cstring>
+#include<cstdlib>
+
+using namespace std;
+
+
+
+void getInput(Player*);
+void displayAllPlayerRecord(Player*);
+const string LINE(60, '*');
+string getName();
+int getID();
+int getAge();
+double getBatAverage();
+
+const int SIZE = 5;
+
+int main()
+{
+	Player* ptrPlayer = nullptr;
+	ptrPlayer = new Player[SIZE];
+	
+	getInput(ptrPlayer);
+	displayAllPlayerRecord(ptrPlayer);
+
+	delete[] ptrPlayer;
+	return 0;
+}
+
+
+
+void getInput(Player* ptr)
+{
+	string pName;
+	int pNum;
+	int pAge;
+	double batAvg;
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << "\nEnter player " << i + 1 << " information" << endl;
+		pNum = getID();
+		pName = getName();
+		pAge = getAge();
+		batAvg = getBatAverage();
+
+		ptr[i].setPlayerName(pName);
+		ptr[i].setPlayerNumber(pNum);
+		ptr[i].setPlayerAge(pAge);
+		ptr[i].setBatAverage(batAvg);
+
+	}
+}
+
+void displayAllPlayerRecord(Player* ptr)
+{
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << LINE << endl;
+		cout << ptr[i].getPlayerNumber() << "\t" << left << setw(20) << ptr[i].getPlayerName()
+			<< "\t" << ptr[i].getPlayerAge() << "\t" << setprecision(3)
+			<< fixed << ptr[i].getBatAverage() << endl;
+	}	
+}
+
+string getName()
+{
+	string name;
+	cout << "Enter player name: ";
+	cin.ignore();
+	getline(cin, name);
+	return name;
+}
+
+int getID()
+{
+	int num;
+	cout << "\nEnter player number: ";
+	cin >> num;
+	if (num < 0 || 99 < num)
+	{
+		while (num < 0 || 99 < num)
+		{
+			cout << "Number must be 0 ~ 99" << endl;
+			cout << "Re-enter number: ";
+			cin >> num;
+		}
+	}
+	return num;
+}
+
+int getAge()
+{
+	int age;
+	cout << "Enter player age: ";
+	cin >> age;
+	if (age < 4 || age > 16)
+	{
+		while (age < 4 || age > 16)
+		{
+			cout << "Age must be 4 ~ 16" << endl;
+			cout << "Re-enter age: ";
+			cin >> age;
+		}
+	}
+	return age;
+}
+
+double getBatAverage()
+{
+	double batAvg;
+	cout << "Enter batting average: ";
+	cin >> batAvg;
+	if (batAvg < 0 || 1 < batAvg)
+	{
+		while (batAvg < 0 || 1 < batAvg)
+		{
+			cout << "Batting average must be 0 ~ 1" << endl;
+			cout << "Re-enter batting average: ";
+			cin >> batAvg;
+		}
+	}
+	return batAvg;
+}
+
+
+//Enter player 1 information
+//
+//Enter player number : -1
+//Number must be 0 ~99
+//Re - enter number : 100
+//Number must be 0 ~99
+//Re - enter number : 10
+//Enter player name : Sam Jones
+//Enter player age : 3
+//Age must be 4 ~16
+//Re - enter age : 18
+//Age must be 4 ~16
+//Re - enter age : 14
+//Enter batting average : -1
+//Batting average must be 0 ~1
+//Re - enter batting average : 1.5
+//Batting average must be 0 ~1
+//Re - enter batting average : 0.334
+//
+//Enter player 2 information
+//
+//Enter player number : 6
+//Enter player name : Jeff Smith
+//Enter player age : 11
+//Enter batting average : 0.345
+//
+//Enter player 3 information
+//
+//Enter player number : 18
+//Enter player name : John Smith
+//Enter player age : 5
+//Enter batting average : 0.414
+//
+//Enter player 4 information
+//
+//Enter player number : 27
+//Enter player name : Ricky Wells
+//Enter player age : 13
+//Enter batting average : 0.001
+//
+//Enter player 5 information
+//
+//Enter player number : 66
+//Enter player name : Darth Vader
+//Enter player age : 11
+//Enter batting average : 1
+//* ***********************************************************
+//10      Sam Jones               14      0.334
+//* ***********************************************************
+//6       Jeff Smith              11      0.345
+//* ***********************************************************
+//18      John Smith              5       0.414
+//* ***********************************************************
+//27      Ricky Wells             13      0.001
+//* ***********************************************************
+//66      Darth Vader             11      1.000
+//
+//66, Darth Vader removed
+//
+//27, Ricky Wells removed
+//
+//18, John Smith removed
+//
+//6, Jeff Smith removed
+//
+//10, Sam Jones removed
+//
+//C : \Users\Joseph Rydel\source\repos\Player\Debug\Player.exe(process 8068) exited with code 0.
+//Press any key to close this window . . .
